@@ -42,12 +42,10 @@ const OrderConfirmationPage = () => {
           <p className="mb-2"><span className="font-semibold">Phone No:</span> {order?.orderDetails?.phoneNo}</p>
           <p className="mb-2"><span className="font-semibold">Total Amount:</span> ₹{order?.totalAmount.toFixed(2)}</p>
           <p className="mb-2"><span className="font-semibold">Discount Amount:</span> ₹{order?.orderDetails?.discountAmount?.toFixed(2)}</p>
-          <p className="mb-2">
+          {/* <p className="mb-2">
             <span className="font-semibold">Paid Amount:</span> ₹
-            {((order?.totalAmount - order?.orderDetails?.discountAmount ?? 0) > 0
-              ? (order?.totalAmount - order?.orderDetails.discountAmount ?? 0).toFixed(2)
-              : 0)}
-          </p>
+            {(order?.totalAmount - order?.orderDetails?.discountAmount ?? 0).toFixed(2)}
+          </p> */}
 
           <p className="mb-2 flex items-center"><span className="font-semibold mr-2">Selected Payment Method:</span>
             {renderPaymentIcon()}
