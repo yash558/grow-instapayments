@@ -113,7 +113,7 @@ export default function Cart() {
   };
 
   return (
-    <div className={`px-4 md:px-8 lg:px-12 xl:px-20 py-8  min-h-[90vh]`} style={{ background: darkMode ? themeColors['--background'] : "gray" }}>
+    <div className={`px-4 md:px-8 lg:px-12 xl:px-20 py-8  min-h-[90vh]`} style={{ background: darkMode ? themeColors['--background'] : "white" }}>
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-12 md:col-span-8 bg-white border border-gray-300 rounded-lg text-slate-800 overflow-hidden p-5 font-bold ">
           <div className="mb-8">

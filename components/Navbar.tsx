@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleDarkMode, setThemeColors } from '@/lib/features/darkMode/darkModeSlice';
 import { RootState } from '@/lib/store';
 import { fetchBrandMetadata } from '@/lib/api';
+import { Sun, Moon } from 'lucide-react';
 
 
 type BrandMetadata = {
   merchantLogo?: string;
   merchantName?: string;
-  theme?: any; 
+  theme?: any;
 };
 
 
@@ -51,7 +52,15 @@ const Navbar: React.FC = () => {
             onClick={handleToggleDarkMode}
             className="rounded-md px-4 py-2 bg-gray-700 hover:bg-gray-600"
           >
-            {darkMode ? 'Light' : 'Dark'}
+            {darkMode ? (
+              <span>
+                <Moon size={20} className="mr-1" />
+              </span>
+            ) : (
+              <span>
+                <Sun size={20} className="mr-1 text-yellow-400" />
+              </span>
+            )}
           </button>
         </div>
       </nav>
