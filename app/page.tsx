@@ -154,18 +154,18 @@ export default function Cart() {
             <h2 className="uppercase flex-1">Product</h2>
             <h2 className="uppercase w-1/4 text-center">Rate/Pc</h2>
             <h2 className="uppercase w-1/4 text-center">Quantity</h2>
-            <h2 className="uppercase w-1/4 text-center">Price</h2>
+            <h2 className="uppercase w-1/4 text-end">Price</h2>
           </div>
           <div className="">
             {cartItems.map((item: any, index: any) => (
-              <div key={index} className="flex items-center justify-between border-b border-slate-400 pb-3 font-semibold text-sm mb-4">
+              <div key={index} className="flex  items-center justify-between border-b border-slate-400 pb-3 font-semibold text-sm mb-4">
                 <div className="flex items-center gap-3 flex-1">
                   <Image
                     src={item.image}
                     width={249}
                     height={249}
                     alt="Alt text"
-                    className="rounded-xl w-20 h-20"
+                    className="rounded-xl w-20 h-20 md:flex hidden"
                   />
                   <div className="flex flex-col">
                     <h2>{item.title.split(' ').slice(0, 3).join(' ')}{item.title.split(' ').length > 3 ? ' ...' : ''}</h2>
@@ -177,12 +177,12 @@ export default function Cart() {
                 <div className="w-1/4 text-center">
                   <div className="flex items-center justify-center">
                     <div className="rounded-xl border border-gray-400 flex items-center">
-                      <button className="border-r border-gray-400 py-2 px-3" onClick={() => handleQuantityChange(item.id, item.quantity - 1)}>
-                        <Minus />
+                      <button className="border-r border-gray-400 py-2 md:px-3 px-1" onClick={() => handleQuantityChange(item.id, item.quantity - 1)}>
+                        <Minus className="h-4" />
                       </button>
-                      <p className="py-2 px-3">{item.quantity}</p>
-                      <button className="border-l border-gray-400 py-2 px-3" onClick={() => handleQuantityChange(item.id, item.quantity + 1)}>
-                        <Plus />
+                      <p className="py-2 md:px-3 px-1">{item.quantity}</p>
+                      <button className="border-l border-gray-400 py-2 md:px-3 px-1" onClick={() => handleQuantityChange(item.id, item.quantity + 1)}>
+                        <Plus className="h-4" />
                       </button>
                     </div>
                   </div>

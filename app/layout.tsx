@@ -19,8 +19,10 @@ export default function RootLayout({
   return (
     <ReduxProvider>
       <html lang="en">
-
-        <body className={inter.className}> <Navbar />{children}</body>
+        <body className={inter.className}>
+           <Navbar />
+           {children}
+        </body>
       </html>
     </ReduxProvider>
   );
