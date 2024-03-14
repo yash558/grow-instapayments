@@ -12,6 +12,8 @@ const Payment = () => {
   const paymentMethods = useSelector((state: RootState) => state.payment.methods);
   const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
   const selectedMethod = useSelector((state: RootState) => state.payment.selectedMethod);
+  const themeColors = useSelector((state: RootState) => state.darkMode.themeColors);
+  const darkMode = useSelector((state: RootState) => state.darkMode.darkMode);
 
   useEffect(() => { 
     const fetchData = async () => {
@@ -48,7 +50,7 @@ const Payment = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-6 px-4 sm:py-12 flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-gray-100  py-6 px-4 sm:py-12 flex flex-col justify-center items-center" style={{ background: darkMode ? themeColors['--background'] : "" }}>
       <Link href="/">
         <button className="mb-8 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition duration-300">
           Back

@@ -113,7 +113,7 @@ export default function Cart() {
   };
 
   return (
-    <div className={`px-4 md:px-8 lg:px-12 xl:px-20 py-8  min-h-[90vh]`} style={{ background: darkMode ? themeColors['--background'] : "white" }}>
+    <div className={`px-4 md:px-8 lg:px-12 xl:px-20 py-8 bg-gray-100  min-h-full`} style={{ background: darkMode ? themeColors['--background'] : "" }}>
       <h1 className="text-4xl font-bold text-center text-green-600 pb-8">
         InstaPayments
       </h1>

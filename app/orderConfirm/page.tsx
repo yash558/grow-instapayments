@@ -9,7 +9,8 @@ const OrderConfirmationPage = () => {
 
   const order = useSelector((state: RootState) => state.order);
   const selectedPaymentMethod = useSelector((state: RootState) => state.payment.selectedMethod);
-
+  const themeColors = useSelector((state: RootState) => state.darkMode.themeColors);
+  const darkMode = useSelector((state: RootState) => state.darkMode.darkMode);
   useEffect(() => {
 
     const generateRandomStatus = () => {
@@ -34,32 +35,34 @@ const OrderConfirmationPage = () => {
   const paidAmount = order?.totalAmount - order?.discountAmount ?? 0;
 
   return (
-    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center md:px-24 px-8">
+    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center md:px-24 px-8" style={{ background: darkMode ? themeColors['--background'] : "" }}>
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-semibold mb-8 text-center">Order Confirmation</h1>
+        <h1 className="text-3xl font-semibold mb-8 text-center" style={{ color: darkMode ? "white" : "black" }}>Order Confirmation</h1>
         <div className="bg-white shadow-md rounded-lg p-8">
-          <h2 className="text-xl font-semibold mb-4">Order Details</h2>
-          <p className="mb-2"><span className="font-semibold">Delivery Address:</span> {order?.orderDetails?.address}</p>
-          <p className="mb-2"><span className="font-semibold">Phone No:</span> {order?.orderDetails?.phoneNo}</p>
-          <p className="mb-2"><span className="font-semibold">Total Amount:</span> ₹{order?.totalAmount.toFixed(2)}</p>
-          <p className="mb-2"><span className="font-semibold">Discount Amount:</span> ₹{order?.discountAmount?.toFixed(2)}</p>
-          <p className="mb-2">
-            <span className="font-semibold">Paid Amount:</span> ₹
-           {paidAmount.toFixed(2)}
-          </p>
+          <h2 className="text-2xl font-semibold mb-6 text-gray-800">Order Details</h2>
+          <div className="mb-6">
+            <p className="mb-2"><span className="font-semibold text-gray-700">Delivery Address:</span> {order?.orderDetails?.address}</p>
+            <p className="mb-2"><span className="font-semibold text-gray-700">Phone No:</span> {order?.orderDetails?.phoneNo}</p>
+            <p className="mb-2"><span className="font-semibold text-gray-700">Total Amount:</span> ₹{order?.totalAmount.toFixed(2)}</p>
+            <p className="mb-2"><span className="font-semibold text-gray-700">Discount Amount:</span> ₹{order?.discountAmount?.toFixed(2)}</p>
+            <p className="mb-2"><span className="font-semibold text-gray-700">Paid Amount:</span> ₹{paidAmount.toFixed(2)}</p>
+          </div>
 
-          <p className="mb-2 flex items-center"><span className="font-semibold mr-2">Selected Payment Method:</span>
-            {renderPaymentIcon()}
-            <span className="ml-1">{selectedPaymentMethod}</span>
-          </p>
+          <div className="mb-6 flex items-center">
+            <span className="font-semibold text-gray-700 mr-2">Selected Payment Method:</span>
+            <div className="flex items-center">
+              {renderPaymentIcon()}
+              <span className="ml-2">{selectedPaymentMethod}</span>
+            </div>
+          </div>
 
           {orderStatus && (
             <div>
-              <h3 className="text-xl font-semibold mt-6 flex items-center">Status:
-                {orderStatus === 'Success' && <Check className="w-6 h-6 text-green-500 mx-2" />}
-                {orderStatus === 'Failure' && <X className="w-6 h-6 text-red-500 mx-2" />}
-                {orderStatus === 'Pending' && <Clock className="w-6 h-6 text-yellow-500 mx-2" />}
-                {orderStatus}
+              <h3 className="text-2xl font-semibold mb-4 flex items-center text-gray-800">Status:
+                {orderStatus === 'Success' && <Check className="w-6 h-6 text-green-500 ml-2" />}
+                {orderStatus === 'Failure' && <X className="w-6 h-6 text-red-500 ml-2" />}
+                {orderStatus === 'Pending' && <Clock className="w-6 h-6 text-yellow-500 ml-2" />}
+                <span className="ml-2">{orderStatus}</span>
               </h3>
               {orderStatus === 'Success' && <p className="text-green-500">Your order was successfully processed.</p>}
               {orderStatus === 'Failure' && <p className="text-red-500">There was an issue processing your order. Please try again later.</p>}
@@ -67,18 +70,26 @@ const OrderConfirmationPage = () => {
             </div>
           )}
         </div>
+
         <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Order Items</h2>
-          {order?.items.map((item: any, index: any) => (
-            <div key={index} className="flex items-center mb-4 bg-white rounded-lg shadow-md p-4">
-              <BaggageClaim className="w-8 h-8 mr-4 text-gray-600" />
-              <div className="flex-grow">
-                <p className="text-lg font-semibold">{item.title}</p>
-                <p className="text-gray-600">Qty: {item.quantity}</p>
-                <p className="text-gray-600">Price: ₹{item.price}</p>
+          <h2 className="text-xl font-semibold mb-4" style={{ color: darkMode ? "white" : "black" }}>Order Items</h2>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {order?.items.map((item: any, index: any) => (
+              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105">
+                <img src={item.image} alt={item.title} className="w-full h-40 object-cover rounded-t-lg" />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                  <div className="flex justify-between items-center mb-2">
+                    <p className="text-gray-600">Qty: {item.quantity}</p>
+                    <p className="text-gray-600">Price: ₹{item.price}</p>
+                  </div>
+
+                </div>
               </div>
-            </div>
-          ))}
+
+            ))}
+          </div>
+
         </div>
 
       </div>
