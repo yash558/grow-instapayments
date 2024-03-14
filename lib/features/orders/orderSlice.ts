@@ -13,20 +13,20 @@ interface OrderItem {
 interface OrderState {
   items: OrderItem[];
   totalAmount: number;
+  discountAmount: number;    
   orderDetails: {
     address: string;
     phoneNo: string;
-    discountAmount?: number;    
   }; 
 }
 
 const initialState: OrderState = {
   items: [],
   totalAmount: 0,
+  discountAmount: 0,
   orderDetails: {
     address: '',
-    phoneNo: '',
-    discountAmount: 0,
+    phoneNo: '',   
   },
 };
 
@@ -40,13 +40,17 @@ const orderSlice = createSlice({
     setOrderAmount(state, action: PayloadAction<number>) {
       state.totalAmount = action.payload;
     },
-    setOrderDetails(state, action: PayloadAction<{ address: string; phoneNo: string; discountAmount: number }>) {
+    setDiscountAmount(state, action: PayloadAction<number>) {
+      state.discountAmount = action.payload;
+    },
+    setOrderDetails(state, action: PayloadAction<{ address: string; phoneNo: string; }>) {
       state.orderDetails = action.payload;
     },
+    
    
   },
 });
 
-export const { setOrderItems, setOrderAmount, setOrderDetails } = orderSlice.actions;
+export const { setOrderItems, setOrderAmount, setOrderDetails, setDiscountAmount } = orderSlice.actions;
 
 export default orderSlice.reducer;

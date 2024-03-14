@@ -49,7 +49,7 @@ const Payment = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 py-6 px-4 sm:py-12 flex flex-col justify-center items-center">
-      <Link href="/checkout">
+      <Link href="/">
         <button className="mb-8 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition duration-300">
           Back
         </button>

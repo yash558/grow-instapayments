@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItems, setTotalAmount, updateItemQuantity } from '../lib/features/cart/cartSlice';
-import { setOrderDetails, setOrderAmount, setOrderItems } from '../lib/features/orders/orderSlice';
+import { setOrderDetails, setOrderAmount, setOrderItems, setDiscountAmount } from '../lib/features/orders/orderSlice';
 import { RootState } from '@/lib/store';
 import { fetchOrderDetails, fetchBrandMetadata } from '../lib/api';
 import { useRouter } from 'next/navigation';
@@ -94,7 +94,8 @@ export default function Cart() {
       setPhoneNoError('Invalid phone number format');
       return;
     }
-    dispatch(setOrderDetails({ address, phoneNo, discountAmount: discount }));
+    dispatch(setOrderDetails({ address, phoneNo}));
+    dispatch(setDiscountAmount( discount ))
     router.push("/payment");
   };
 
