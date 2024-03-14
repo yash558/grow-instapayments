@@ -91,11 +91,11 @@ export default function Cart() {
       return;
     }
     if (!isValidPhoneNumber(phoneNo)) {
-      setPhoneNoError('Invalid phone number format');
+      setPhoneNoError('Phone Number should be 10 Digit!');
       return;
     }
-    dispatch(setOrderDetails({ address, phoneNo}));
-    dispatch(setDiscountAmount( discount ))
+    dispatch(setOrderDetails({ address, phoneNo }));
+    dispatch(setDiscountAmount(discount))
     router.push("/payment");
   };
 
@@ -114,6 +114,11 @@ export default function Cart() {
 
   return (
     <div className={`px-4 md:px-8 lg:px-12 xl:px-20 py-8  min-h-[90vh]`} style={{ background: darkMode ? themeColors['--background'] : "white" }}>
+      <h1 className="text-4xl font-bold text-center text-green-600 pb-8">
+        InstaPayments
+      </h1>
+
+
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-12 md:col-span-8 bg-white border border-gray-300 rounded-lg text-slate-800 overflow-hidden p-5 font-bold ">
           <div className="mb-8">
