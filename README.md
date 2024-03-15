@@ -1,3 +1,8 @@
+![image](https://github.com/yash558/grow-instapayments/assets/76558099/4b265878-5421-42ca-a70e-a75474d5963c)
+![image](https://github.com/yash558/grow-instapayments/assets/76558099/fb76e047-525f-43d6-97d9-531168576b64)
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
