@@ -36,6 +36,6 @@ export const fetchBrandMetadata = async (): Promise<BrandMetadata> => {
     return cache.brandMetadata;
   } catch (error) {
     console.error('Failed to fetch brand metadata:', error);
-    throw error; // Rethrow the error to propagate it
+    throw error;
   }
 };
