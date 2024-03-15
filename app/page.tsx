@@ -207,7 +207,7 @@ export default function Cart() {
             </div>
             <div className="flex items-center justify-between pb-4 mt-2">
               <span className="text-gray-600">Discount</span>
-              <span className="text-red-600 font-semibold">₹{discount.toFixed(2)}</span>
+              <span className="text-green-500 font-semibold">₹{discount.toFixed(2)}</span>
             </div>
             <div className="flex items-center justify-between pb-4 mt-2">
               <span className="text-gray-600">Tax</span>
